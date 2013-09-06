@@ -17,6 +17,7 @@ ofxSQLite::ofxSQLite(std::string sDB):db_name(sDB) {
 	setup(sDB);
 }
 
+
 void ofxSQLite::setup(std::string sDB) {
 	db_name = sDB;
 	db_file  = sDB; 
@@ -25,6 +26,21 @@ void ofxSQLite::setup(std::string sDB) {
 		exit(1);
 	}
 	cout << "opened:" << db_file << endl;
+}
+
+
+// overrides setup from ofxsqlite
+void ofxSQLite::setupAndCreate(std::string sDB)
+{
+    db_name = sDB;
+	db_file  = sDB;
+	if (SQLITE_OK != sqlite3_open_v2( (char*)sDB.c_str() , &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL)) {
+		cout << sqlite3_errmsg(db);
+		exit(1);
+	}
+	cout << "opened or created:" << db_file << endl;
+    
+    
 }
 
 int ofxSQLite::simpleQuery(const char* pSQL) {

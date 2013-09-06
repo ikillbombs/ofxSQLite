@@ -1,5 +1,6 @@
 #ifndef OFXSQLITESIMPLERH
 #define OFXSQLITESIMPLERH
+#include "ofxSQLite.h"
 /*
 #include <string>
 #include <iostream>

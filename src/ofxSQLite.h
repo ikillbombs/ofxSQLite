@@ -40,6 +40,8 @@ class ofxSQLite {
 		ofxSQLite();
 		ofxSQLite(std::string sDB);
 		void setup(std::string sDB);
+        void setupAndCreate(std::string sDB);
+    
 		ofxSQLiteInsert insert(std::string sTable);
 		ofxSQLiteUpdate update(std::string sTable);
 		ofxSQLiteDelete remove(std::string sTable);
